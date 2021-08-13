@@ -1,6 +1,13 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import Category, Product
+from .models import Category, Product, IncomeStatement
+
+
+class IncomeStatementType(DjangoObjectType):
+
+    class Meta:
+        model = IncomeStatement
+        fields = '__all__'
 
 
 class CategoryType(DjangoObjectType):
@@ -19,6 +26,7 @@ class Query(graphene.ObjectType):
     products = graphene.List(
         ProductType,  category=graphene.String(required=False))
     categories = graphene.List(CategoryType)
+    income_statements = graphene.List(IncomeStatementType)
 
     def resolve_products(root, info, category=None):
         if category:
@@ -28,6 +36,9 @@ class Query(graphene.ObjectType):
 
     def resolve_categories(root, info):
         return Category.objects.all()
+
+    def resolve_income_statements(root, info):
+        return IncomeStatement.objects.all()
 
 
 schema = graphene.Schema(query=Query)
