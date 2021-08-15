@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import Category, Product, IncomeStatement
+from .models import IncomeStatement
 
 
 class IncomeStatementType(DjangoObjectType):

@@ -2,6 +2,5 @@
 .env
 api/__pycache__/
 app/__pycache__/
-app/migrations/
 app/management/__pycache__
 app/management/commands/__pycache__

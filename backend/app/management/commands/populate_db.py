@@ -50,6 +50,8 @@ class Command(BaseCommand):
             stock_data = get_jsonparsed_data(url)
             print(stock_data)
             stock_data_frame = pd.DataFrame(data=stock_data)
+            stock_data_frame['key'] = stock_data_frame['symbol'] + \
+                ": " + stock_data_frame['date']
             print(stock_data_frame)
             stock_data_frame.to_sql(
-                "app_incomestatement", con=engine, if_exists="append")
+                "app_incomestatement", con=engine, if_exists='replace')

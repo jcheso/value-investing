@@ -1,6 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Header from "./header";
-import Breadcrumb from "./breadcrumb";
 
 export default function Layout({ children }) {
   return (
