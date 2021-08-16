@@ -4,17 +4,16 @@ from django.utils import timezone
 
 
 class IncomeStatement(models.Model):
-    # class Meta:
-    #     db_table = 'app_incomestatement'  # This tells Django where the SQL table is
-    # managed = False  # Use this if table already exists
+    class Meta:
+        db_table = 'app_incomestatement'  # This tells Django where the SQL table is
+    #     managed = False  # Use this if table already exists
     # and doesn't need to be managed by Django
-    index = models.IntegerField(default=0)
     key = models.CharField(max_length=255, default="key", primary_key=True)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
     reportedCurrency = models.CharField(max_length=255, default="USD")
     fillingDate = models.DateField(max_length=255, default=timezone.now)
-    acceptedDate = models.DateTimeField(max_length=255, default=timezone.now)
+    acceptedDate = models.DateField(max_length=255, default=timezone.now)
     period = models.CharField(max_length=255)
     revenue = models.BigIntegerField(default=0)
     costOfRevenue = models.BigIntegerField(default=0)
