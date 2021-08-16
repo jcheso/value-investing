@@ -53,16 +53,48 @@ class Command(BaseCommand):
         #     "app_sandp500", con=engine, if_exists='replace', index=False)
 
         # API Call for Income Statements
-        income_statement_df = pd.DataFrame([])
-        for index, symbol, in enumerate(s_and_p_df['symbol']):
-            print("Fetching Income Statement for: ", symbol)
+        # income_statement_df = pd.DataFrame([])
+        # for index, symbol, in enumerate(s_and_p_df['symbol']):
+        #     print("Fetching Income Statement for: ", symbol)
+        #     print(str(index) + " of " + str(len(s_and_p_df['symbol'])))
+        #     print("---------------------------------------------------------")
+        #     url = (
+        #         f"https://financialmodelingprep.com/api/v3/income-statement/{symbol}?limit=3&apikey={MY_API_KEY}")
+        #     symbol_data = get_jsonparsed_data(url)
+        #     symbol_data_df = pd.DataFrame(data=symbol_data)
+        #     income_statement_df = income_statement_df.append(symbol_data_df)
+
+        # income_statement_df.to_sql(
+        #     "app_incomestatement", con=engine, if_exists='replace', index=False)
+
+        # API Call for Balance Sheet Statements
+        balance_sheet_statement_df = pd.DataFrame([])
+        for index, symbol, in enumerate(s_and_p_df['symbol'][:5]):
+            print("Fetching Balance Sheet Statement for: ", symbol)
             print(str(index) + " of " + str(len(s_and_p_df['symbol'])))
             print("---------------------------------------------------------")
             url = (
-                f"https://financialmodelingprep.com/api/v3/income-statement/{symbol}?limit=3&apikey={MY_API_KEY}")
+                f"https://financialmodelingprep.com/api/v3/balance-sheet-statement/{symbol}?limit=3&apikey={MY_API_KEY}")
             symbol_data = get_jsonparsed_data(url)
             symbol_data_df = pd.DataFrame(data=symbol_data)
-            income_statement_df = income_statement_df.append(symbol_data_df)
+            balance_sheet_statement_df = balance_sheet_statement_df.append(
+                symbol_data_df)
 
-        income_statement_df.to_sql(
-            "app_incomestatement", con=engine, if_exists='replace', index=False)
+        balance_sheet_statement_df.to_sql(
+            "app_balancesheetstatement", con=engine, if_exists='replace', index=False)
+
+        # API Call for Cash Flow Statements
+        cash_flow_statement_df = pd.DataFrame([])
+        for index, symbol, in enumerate(s_and_p_df['symbol'][:5]):
+            print("Fetching Cash Flow Statement for: ", symbol)
+            print(str(index) + " of " + str(len(s_and_p_df['symbol'])))
+            print("---------------------------------------------------------")
+            url = (
+                f"https://financialmodelingprep.com/api/v3/cash-flow-statement/{symbol}?limit=3&apikey={MY_API_KEY}")
+            symbol_data = get_jsonparsed_data(url)
+            symbol_data_df = pd.DataFrame(data=symbol_data)
+            cash_flow_statement_df = cash_flow_statement_df.append(
+                symbol_data_df)
+
+        cash_flow_statement_df.to_sql(
+            "app_cashflowstatement", con=engine, if_exists='replace', index=False)
