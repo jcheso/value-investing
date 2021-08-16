@@ -1,15 +1,11 @@
 import { gql } from "@apollo/client";
 import client from "../pages/api/apollo-client";
 import Layout from "../components/layout";
-
+import InvestingForm from "../components/investing-form";
 const Home = (props) => {
   return (
     <Layout>
-      {props.data.map((data, index) => (
-        <h1 key={index} className="text-4xl text-red-500">
-          Ticker:{data.symbol}
-        </h1>
-      ))}
+      <InvestingForm />
     </Layout>
   );
 };

@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from urllib.request import urlopen
 import json
 import os
-from app.models import IncomeStatement
 from django.conf import settings
 from sqlalchemy import create_engine
 
@@ -69,7 +68,7 @@ class Command(BaseCommand):
 
         # API Call for Balance Sheet Statements
         balance_sheet_statement_df = pd.DataFrame([])
-        for index, symbol, in enumerate(s_and_p_df['symbol'][:5]):
+        for index, symbol, in enumerate(s_and_p_df['symbol']):
             print("Fetching Balance Sheet Statement for: ", symbol)
             print(str(index) + " of " + str(len(s_and_p_df['symbol'])))
             print("---------------------------------------------------------")
@@ -85,7 +84,7 @@ class Command(BaseCommand):
 
         # API Call for Cash Flow Statements
         cash_flow_statement_df = pd.DataFrame([])
-        for index, symbol, in enumerate(s_and_p_df['symbol'][:5]):
+        for index, symbol, in enumerate(s_and_p_df['symbol']):
             print("Fetching Cash Flow Statement for: ", symbol)
             print(str(index) + " of " + str(len(s_and_p_df['symbol'])))
             print("---------------------------------------------------------")
