@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import client from "../pages/api/apollo-client";
 import Layout from "../components/layout";
 import InvestingForm from "../components/investing-form";
