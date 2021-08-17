@@ -22,6 +22,7 @@ class IncomeStatement(models.Model):
         verbose_name = 'Income Statement'
         # managed = False  # Use this if table already exists
     # and doesn't need to be managed by Django
+    index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
     reportedCurrency = models.CharField(max_length=255, default="USD")
@@ -67,7 +68,7 @@ class BalanceSheetStatement (models.Model):
         # This tells Django where the SQL table is
         db_table = 'app_balancesheetstatement'
         verbose_name = 'Balance Sheet Statement'
-
+    index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
     fillingDate = models.DateField(max_length=255, default=timezone.now)
@@ -121,7 +122,7 @@ class CashFlowStatement(models.Model):
         # This tells Django where the SQL table is
         db_table = 'app_cashflowstatement'
         verbose_name = 'Cash Flow Statement'
-
+    index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
     fillingDate = models.DateField(max_length=255, default=timezone.now)

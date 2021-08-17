@@ -55,8 +55,11 @@ class Query(graphene.ObjectType):
         strategy = strategy
         value = value
         share_index = share_index
-        symbol, quantity, price = generate_portfolio.get_portfolio(
-            strategy, value, share_index)
+        symbol = "TSLA"
+        quantity = 19
+        price = 230
+        # symbol, quantity, price = generate_portfolio.get_portfolio(
+        #     strategy, value, share_index)
 
         return PortfolioType(strategy, value, share_index, symbol, quantity, price)
 
