@@ -3,7 +3,7 @@ import client from "./api/apollo-client";
 import Layout from "../components/layout";
 // import InvestingForm from "../components/investing-form";
 
-const Home = (props) => {
+const PiotroskiScore = (props) => {
   console.log(props);
   return (
     <Layout>
@@ -105,4 +105,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Home;
+export default PiotroskiScore;

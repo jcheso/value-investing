@@ -1,10 +1,11 @@
 import { gql, useMutation } from "@apollo/client";
 import client from "../pages/api/apollo-client";
 import Layout from "../components/layout";
-const Home = (props) => {
+import InvestingForm from "../components/investing-form";
+const PortfolioGenerator = (props) => {
   return (
     <Layout>
-      <h1>Dashboard</h1>{" "}
+      <InvestingForm />
     </Layout>
   );
 };
@@ -27,4 +28,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Home;
+export default PortfolioGenerator;
