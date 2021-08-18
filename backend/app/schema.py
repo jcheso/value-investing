@@ -1,7 +1,24 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import BalanceSheetStatement, CashFlowStatement, IncomeStatement
-from .scripts import generate_portfolio
+from .models import (
+    BalanceSheetStatement,
+    CashFlowStatement,
+    IncomeStatement,
+    PiotroskiScore,
+    SAndP500,
+)
+
+
+class PiotroskiScoreType(DjangoObjectType):
+    class Meta:
+        model = PiotroskiScore
+        fields = "__all__"
+
+
+class SAndP500Type(DjangoObjectType):
+    class Meta:
+        model = SAndP500
+        fields = "__all__"
 
 
 class IncomeStatementType(DjangoObjectType):
@@ -41,6 +58,8 @@ class Query(graphene.ObjectType):
         value=graphene.String(required=True),
         share_index=graphene.String(required=True),
     )
+    piotroski_score = graphene.List(PiotroskiScoreType)
+    sandp500 = graphene.List(SAndP500Type)
 
     def resolve_income_statements(root, info):
         return IncomeStatement.objects.all()
@@ -50,6 +69,12 @@ class Query(graphene.ObjectType):
 
     def resolve_cash_flow_statements(root, info):
         return CashFlowStatement.objects.all()
+
+    def resolve_piotroski_score(root, info):
+        return PiotroskiScore.objects.all()
+
+    def resolve_sandp500(root, info):
+        return SAndP500.objects.all()
 
     def resolve_generate_portfolio(root, info, strategy, value, share_index):
 
