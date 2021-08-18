@@ -5,24 +5,21 @@ from .scripts import generate_portfolio
 
 
 class IncomeStatementType(DjangoObjectType):
-
     class Meta:
         model = IncomeStatement
-        fields = '__all__'
+        fields = "__all__"
 
 
 class BalanceSheetStatementType(DjangoObjectType):
-
     class Meta:
         model = BalanceSheetStatement
-        fields = '__all__'
+        fields = "__all__"
 
 
 class CashFlowStatementType(DjangoObjectType):
-
     class Meta:
         model = CashFlowStatement
-        fields = '__all__'
+        fields = "__all__"
 
 
 class PortfolioType(graphene.ObjectType):
@@ -38,8 +35,12 @@ class Query(graphene.ObjectType):
     income_statements = graphene.List(IncomeStatementType)
     balance_sheet_statements = graphene.List(BalanceSheetStatementType)
     cash_flow_statements = graphene.List(CashFlowStatementType)
-    generate_portfolio = graphene.Field(PortfolioType, strategy=graphene.String(
-        required=True), value=graphene.String(required=True), share_index=graphene.String(required=True))
+    generate_portfolio = graphene.Field(
+        PortfolioType,
+        strategy=graphene.String(required=True),
+        value=graphene.String(required=True),
+        share_index=graphene.String(required=True),
+    )
 
     def resolve_income_statements(root, info):
         return IncomeStatement.objects.all()

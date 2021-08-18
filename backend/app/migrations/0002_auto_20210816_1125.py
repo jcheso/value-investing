@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0001_initial'),
+        ("app", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='incomestatement',
-            name='key',
+            model_name="incomestatement",
+            name="key",
         ),
         migrations.AlterField(
-            model_name='incomestatement',
-            name='link',
-            field=models.URLField(default='None', primary_key=True, serialize=False),
+            model_name="incomestatement",
+            name="link",
+            field=models.URLField(default="None", primary_key=True, serialize=False),
         ),
     ]

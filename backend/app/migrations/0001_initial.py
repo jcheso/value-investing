@@ -8,65 +8,86 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='IncomeStatement',
+            name="IncomeStatement",
             fields=[
-                ('key', models.CharField(default=0, max_length=255, primary_key=True, serialize=False)),
-                ('date', models.DateField(default=django.utils.timezone.now, max_length=255)),
-                ('symbol', models.CharField(max_length=255)),
-                ('reportedCurrency', models.CharField(default='USD', max_length=255)),
-                ('fillingDate', models.DateField(default=django.utils.timezone.now, max_length=255)),
-                ('acceptedDate', models.DateField(default=django.utils.timezone.now, max_length=255)),
-                ('period', models.CharField(max_length=255)),
-                ('revenue', models.BigIntegerField(default=0)),
-                ('costOfRevenue', models.BigIntegerField(default=0)),
-                ('grossProfit', models.BigIntegerField(default=0)),
-                ('grossProfitRatio', models.FloatField(default=0)),
-                ('researchAndDevelopmentExpenses', models.BigIntegerField(default=0)),
-                ('generalAndAdministrativeExpenses', models.BigIntegerField(default=0)),
-                ('sellingAndMarketingExpenses', models.BigIntegerField(default=0)),
-                ('sellingGeneralAndAdministrativeExpenses', models.BigIntegerField(default=0)),
-                ('otherExpenses', models.BigIntegerField(default=0)),
-                ('operatingExpenses', models.BigIntegerField(default=0)),
-                ('costAndExpenses', models.BigIntegerField(default=0)),
-                ('interestExpense', models.BigIntegerField(default=0)),
-                ('depreciationAndAmortization', models.BigIntegerField(default=0)),
-                ('ebitda', models.BigIntegerField(default=0)),
-                ('ebitdaratio', models.FloatField(default=0)),
-                ('operatingIncome', models.BigIntegerField(default=0)),
-                ('operatingIncomeRatio', models.FloatField(default=0)),
-                ('totalOtherIncomeExpensesNet', models.BigIntegerField(default=0)),
-                ('incomeBeforeTax', models.BigIntegerField(default=0)),
-                ('incomeBeforeTaxRatio', models.FloatField(default=0)),
-                ('incomeTaxExpense', models.BigIntegerField(default=0)),
-                ('netIncome', models.BigIntegerField(default=0)),
-                ('netIncomeRatio', models.FloatField(default=0)),
-                ('eps', models.FloatField(default=0)),
-                ('epsdiluted', models.FloatField(default=0)),
-                ('weightedAverageShsOut', models.BigIntegerField(default=0)),
-                ('weightedAverageShsOutDil', models.BigIntegerField(default=0)),
-                ('link', models.URLField()),
-                ('finalLink', models.URLField()),
+                (
+                    "key",
+                    models.CharField(
+                        default=0, max_length=255, primary_key=True, serialize=False
+                    ),
+                ),
+                (
+                    "date",
+                    models.DateField(default=django.utils.timezone.now, max_length=255),
+                ),
+                ("symbol", models.CharField(max_length=255)),
+                ("reportedCurrency", models.CharField(default="USD", max_length=255)),
+                (
+                    "fillingDate",
+                    models.DateField(default=django.utils.timezone.now, max_length=255),
+                ),
+                (
+                    "acceptedDate",
+                    models.DateField(default=django.utils.timezone.now, max_length=255),
+                ),
+                ("period", models.CharField(max_length=255)),
+                ("revenue", models.BigIntegerField(default=0)),
+                ("costOfRevenue", models.BigIntegerField(default=0)),
+                ("grossProfit", models.BigIntegerField(default=0)),
+                ("grossProfitRatio", models.FloatField(default=0)),
+                ("researchAndDevelopmentExpenses", models.BigIntegerField(default=0)),
+                ("generalAndAdministrativeExpenses", models.BigIntegerField(default=0)),
+                ("sellingAndMarketingExpenses", models.BigIntegerField(default=0)),
+                (
+                    "sellingGeneralAndAdministrativeExpenses",
+                    models.BigIntegerField(default=0),
+                ),
+                ("otherExpenses", models.BigIntegerField(default=0)),
+                ("operatingExpenses", models.BigIntegerField(default=0)),
+                ("costAndExpenses", models.BigIntegerField(default=0)),
+                ("interestExpense", models.BigIntegerField(default=0)),
+                ("depreciationAndAmortization", models.BigIntegerField(default=0)),
+                ("ebitda", models.BigIntegerField(default=0)),
+                ("ebitdaratio", models.FloatField(default=0)),
+                ("operatingIncome", models.BigIntegerField(default=0)),
+                ("operatingIncomeRatio", models.FloatField(default=0)),
+                ("totalOtherIncomeExpensesNet", models.BigIntegerField(default=0)),
+                ("incomeBeforeTax", models.BigIntegerField(default=0)),
+                ("incomeBeforeTaxRatio", models.FloatField(default=0)),
+                ("incomeTaxExpense", models.BigIntegerField(default=0)),
+                ("netIncome", models.BigIntegerField(default=0)),
+                ("netIncomeRatio", models.FloatField(default=0)),
+                ("eps", models.FloatField(default=0)),
+                ("epsdiluted", models.FloatField(default=0)),
+                ("weightedAverageShsOut", models.BigIntegerField(default=0)),
+                ("weightedAverageShsOutDil", models.BigIntegerField(default=0)),
+                ("link", models.URLField()),
+                ("finalLink", models.URLField()),
             ],
             options={
-                'verbose_name': 'Income Statement',
-                'db_table': 'app_incomestatement',
+                "verbose_name": "Income Statement",
+                "db_table": "app_incomestatement",
             },
         ),
         migrations.CreateModel(
-            name='SAndP500',
+            name="SAndP500",
             fields=[
-                ('symbol', models.CharField(default='key', max_length=255, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=255)),
-                ('sector', models.CharField(max_length=255)),
+                (
+                    "symbol",
+                    models.CharField(
+                        default="key", max_length=255, primary_key=True, serialize=False
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("sector", models.CharField(max_length=255)),
             ],
             options={
-                'verbose_name': 'S&P 500 Stock',
-                'db_table': 'app_sandp500',
+                "verbose_name": "S&P 500 Stock",
+                "db_table": "app_sandp500",
             },
         ),
     ]

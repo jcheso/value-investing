@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0004_cashflowstatement'),
+        ("app", "0004_cashflowstatement"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='balancesheetstatement',
-            name='index',
+            model_name="balancesheetstatement",
+            name="index",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='cashflowstatement',
-            name='index',
+            model_name="cashflowstatement",
+            name="index",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='incomestatement',
-            name='index',
+            model_name="incomestatement",
+            name="index",
             field=models.IntegerField(default=0),
         ),
     ]

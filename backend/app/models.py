@@ -1,26 +1,51 @@
 from django.db import models
 from django.utils import timezone
+
 # Create your models here.
 
 
 class SAndP500(models.Model):
     class Meta:
-        db_table = 'app_sandp500'
-        verbose_name = 'S&P 500 Stock'
+        db_table = "app_sandp500"
+        verbose_name = "S&P 500 Stock"
 
     symbol = models.CharField(max_length=255, default="key", primary_key=True)
     name = models.CharField(max_length=255)
     sector = models.CharField(max_length=255)
+    # piotroskiScore = models.ForeignKey(
+    #     "app.PiotroskiScore", verbose_name=("Piotroski Score"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
+class PiotroskiScore(models.Model):
+    class Meta:
+        db_table = "app_piotroskiscore"
+        verbose_name = "Piotroski Score"
+
+    symbol = models.CharField(max_length=255, default="key", primary_key=True)
+    operatingCashFlow = models.IntegerField(default=0)
+    changeInReturnOnAssets = models.IntegerField(default=0)
+    accruals = models.IntegerField(default=0)
+    leverage = models.IntegerField(default=0)
+    liquidity = models.IntegerField(default=0)
+    dilution = models.IntegerField(default=0)
+    grossMargin = models.IntegerField(default=0)
+    assetTurnoverRatio = models.IntegerField(default=0)
+    totalScore = models.IntegerField(default=0)
+    returnOnAssets = models.BigIntegerField(default=0)
+
+    def __str__(self):
+        return self.totalScore
+
+
 class IncomeStatement(models.Model):
     class Meta:
-        db_table = 'app_incomestatement'  # This tells Django where the SQL table is
-        verbose_name = 'Income Statement'
+        db_table = "app_incomestatement"  # This tells Django where the SQL table is
+        verbose_name = "Income Statement"
         # managed = False  # Use this if table already exists
+
     # and doesn't need to be managed by Django
     index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
@@ -63,11 +88,12 @@ class IncomeStatement(models.Model):
         return self.symbol
 
 
-class BalanceSheetStatement (models.Model):
+class BalanceSheetStatement(models.Model):
     class Meta:
         # This tells Django where the SQL table is
-        db_table = 'app_balancesheetstatement'
-        verbose_name = 'Balance Sheet Statement'
+        db_table = "app_balancesheetstatement"
+        verbose_name = "Balance Sheet Statement"
+
     index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
@@ -111,7 +137,7 @@ class BalanceSheetStatement (models.Model):
     totalStockholdersEquity = models.BigIntegerField(default=0)
     totalLiabilitiesAndStockholdersEquity = models.BigIntegerField(default=0)
     totalInvestments = models.BigIntegerField(default=0)
-    totalDebt = models.BigIntegerField(default=0),
+    totalDebt = (models.BigIntegerField(default=0),)
     netDebt = models.BigIntegerField(default=0)
     link = models.URLField(max_length=200, primary_key=True, default="None")
     finalLink = models.URLField(max_length=200)
@@ -120,8 +146,9 @@ class BalanceSheetStatement (models.Model):
 class CashFlowStatement(models.Model):
     class Meta:
         # This tells Django where the SQL table is
-        db_table = 'app_cashflowstatement'
-        verbose_name = 'Cash Flow Statement'
+        db_table = "app_cashflowstatement"
+        verbose_name = "Cash Flow Statement"
+
     index = models.IntegerField(default=0)
     date = models.DateField(max_length=255, default=timezone.now)
     symbol = models.CharField(max_length=255)
