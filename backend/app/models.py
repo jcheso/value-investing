@@ -12,8 +12,6 @@ class SAndP500(models.Model):
     symbol = models.CharField(max_length=255, default="key", primary_key=True)
     name = models.CharField(max_length=255)
     sector = models.CharField(max_length=255)
-    # piotroskiScore = models.ForeignKey(
-    #     "app.PiotroskiScore", verbose_name=("Piotroski Score"), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -38,6 +36,61 @@ class PiotroskiScore(models.Model):
 
     def __str__(self):
         return self.totalScore
+
+
+class MagicFormulaScore(models.Model):
+    class Meta:
+        db_table = "app_magicformulascore"
+        verbose_name = "Magic Formula Score"
+
+    symbol = models.CharField(max_length=255, default="key", primary_key=True)
+    earningYield = models.FloatField(default=0)
+    returnOnCapital = models.FloatField(default=0)
+    forwardAnnualDividendYield = models.FloatField(default=0)
+    magicFormulaRank = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.symbol
+
+
+class CompanyProfile(models.Model):
+    class Meta:
+        db_table = "app_companyprofile"
+        verbose_name = "Company Profile"
+
+    symbol = models.CharField(max_length=255, default="key", primary_key=True)
+    price = models.FloatField(default=0)
+    beta = models.FloatField(default=0)
+    volAvg = models.BigIntegerField(default=0)
+    mktCap = models.BigIntegerField(default=0)
+    lastDiv = models.FloatField(default=0)
+    range = models.CharField(max_length=255)
+    changes = models.FloatField(default=0)
+    companyName = models.CharField(max_length=255)
+    currency = models.CharField(max_length=255)
+    isin = models.CharField(max_length=255)
+    cusip = models.CharField(max_length=255)
+    exchange = models.CharField(max_length=255)
+    exchangeShortName = models.CharField(max_length=255)
+    industry = models.CharField(max_length=255)
+    website = models.URLField(max_length=200, default="None")
+    description = models.CharField(max_length=255)
+    ceo = models.CharField(max_length=255)
+    sector = models.CharField(max_length=255)
+    country = models.CharField(max_length=255)
+    fullTimeEmployees = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip = models.BigIntegerField(default=0)
+    dcfDiff = models.FloatField(default=0)
+    dcf = models.FloatField(default=0)
+    image = models.URLField(max_length=200, default="None")
+    ipoDate = models.DateField(max_length=255, default=timezone.now)
+
+    def __str__(self):
+        return self.symbol
 
 
 class IncomeStatement(models.Model):
@@ -177,8 +230,7 @@ class CashFlowStatement(models.Model):
     commonStockRepurchased = models.BigIntegerField(default=0)
     dividendsPaid = models.BigIntegerField(default=0)
     otherFinancingActivites = models.BigIntegerField(default=0)
-    netCashUsedProvidedByFinancingActivities = models.BigIntegerField(
-        default=0)
+    netCashUsedProvidedByFinancingActivities = models.BigIntegerField(default=0)
     effectOfForexChangesOnCash = models.BigIntegerField(default=0)
     netChangeInCash = models.BigIntegerField(default=0)
     cashAtEndOfPeriod = models.BigIntegerField(default=0)

@@ -5,6 +5,7 @@ from .models import (
     CashFlowStatement,
     IncomeStatement,
     PiotroskiScore,
+    CompanyProfile,
     SAndP500,
 )
 
@@ -12,6 +13,12 @@ from .models import (
 class PiotroskiScoreType(DjangoObjectType):
     class Meta:
         model = PiotroskiScore
+        fields = "__all__"
+
+
+class CompanyProfileType(DjangoObjectType):
+    class Meta:
+        model = CompanyProfile
         fields = "__all__"
 
 
@@ -60,6 +67,7 @@ class Query(graphene.ObjectType):
     )
     piotroski_score = graphene.List(PiotroskiScoreType)
     sandp500 = graphene.List(SAndP500Type)
+    company_profile = graphene.List(CompanyProfileType)
 
     def resolve_income_statements(root, info):
         return IncomeStatement.objects.all()
@@ -75,6 +83,9 @@ class Query(graphene.ObjectType):
 
     def resolve_sandp500(root, info):
         return SAndP500.objects.all()
+
+    def resolve_company_profile(root, info):
+        return CompanyProfile.objects.all()
 
     def resolve_generate_portfolio(root, info, strategy, value, share_index):
 
