@@ -4,6 +4,7 @@ from .models import (
     BalanceSheetStatement,
     CashFlowStatement,
     IncomeStatement,
+    MagicFormulaScore,
     PiotroskiScore,
     CompanyProfile,
     SAndP500,
@@ -55,6 +56,12 @@ class PortfolioType(graphene.ObjectType):
     price = graphene.Float()
 
 
+class MagicFormulaScoreType(DjangoObjectType):
+    class Meta:
+        model = MagicFormulaScore
+        fields = "__all__"
+
+
 class Query(graphene.ObjectType):
     income_statements = graphene.List(IncomeStatementType)
     balance_sheet_statements = graphene.List(BalanceSheetStatementType)
@@ -68,6 +75,7 @@ class Query(graphene.ObjectType):
     piotroski_score = graphene.List(PiotroskiScoreType)
     sandp500 = graphene.List(SAndP500Type)
     company_profile = graphene.List(CompanyProfileType)
+    magic_formula_score = graphene.List(MagicFormulaScoreType)
 
     def resolve_income_statements(root, info):
         return IncomeStatement.objects.all()
@@ -80,6 +88,9 @@ class Query(graphene.ObjectType):
 
     def resolve_piotroski_score(root, info):
         return PiotroskiScore.objects.all()
+
+    def resolve_magic_formula_score(root, info):
+        return MagicFormulaScore.objects.all()
 
     def resolve_sandp500(root, info):
         return SAndP500.objects.all()

@@ -3,7 +3,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-
 class SAndP500(models.Model):
     class Meta:
         db_table = "app_sandp500"

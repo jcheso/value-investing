@@ -12,10 +12,10 @@ import {
 
 // import InvestingForm from "../components/investing-form";
 
-const PiotroskiScore = (props) => {
+const MagicFormula = (props) => {
   console.log(props);
 
-  const data = React.useMemo(() => props.data.piotroskiScore, []);
+  const data = React.useMemo(() => props.data.magicFormulaScore, []);
 
   const columns = React.useMemo(
     () => [
@@ -25,7 +25,7 @@ const PiotroskiScore = (props) => {
       },
       {
         Header: "Score",
-        accessor: "totalScore",
+        accessor: "magicFormulaRank",
       },
     ],
     []
@@ -114,10 +114,10 @@ const PiotroskiScore = (props) => {
 export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
-      query PiotroskiData {
-        piotroskiScore {
+      query MagicFormula {
+        magicFormulaScore {
           symbol
-          totalScore
+          magicFormulaRank
         }
         sandp500 {
           symbol
@@ -135,4 +135,4 @@ export async function getStaticProps() {
   };
 }
 
-export default PiotroskiScore;
+export default MagicFormula;
