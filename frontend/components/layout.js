@@ -7,7 +7,9 @@ export default function Layout({ children }) {
       <Header />
       <main className="-mt-32">
         <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow">{children}</div>
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            {children}
+          </div>
         </div>
       </main>
       <Footer></Footer>

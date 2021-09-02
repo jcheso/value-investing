@@ -4,11 +4,11 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Dashboard", link: "/" },
-  { name: "Portfolio Generator", link: "/portfolio-generator" },
+  { name: "Portfolio Generator", link: "/" },
+  // { name: "Portfolio Generator", link: "/portfolio-generator" },
   { name: "Piotroski Score", link: "/piotroski-score" },
   { name: "Magic Formula", link: "/magic-formula" },
-  { name: "Most Shorted", link: "/most-shorted" },
+  // { name: "Most Shorted", link: "/most-shorted" },
 ];
 const profile = ["Your Profile", "Settings", "Sign out"];
 
@@ -35,7 +35,7 @@ export default function Header(props) {
                         />
                       </div>
                       <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-4">
+                        <div className="ml-10 flex items-baseline space-x-4 py-2">
                           {navigation.map((item, itemIdx) =>
                             itemIdx === 0 ? (
                               <Fragment key={item.name}>
@@ -62,13 +62,13 @@ export default function Header(props) {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-4 flex items-center md:ml-6">
-                        <button className="bg-gray-800 p-1 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        {/* <button className="bg-gray-800 p-1 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">View notifications</span>
                           <BellIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
+                        </button> */}
 
                         {/* Profile dropdown */}
-                        <Menu as="div" className="ml-3 relative">
+                        {/* <Menu as="div" className="ml-3 relative">
                           <div>
                             <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                               <span className="sr-only">Open user menu</span>
@@ -106,7 +106,7 @@ export default function Header(props) {
                               ))}
                             </Menu.Items>
                           </Transition>
-                        </Menu>
+                        </Menu> */}
                       </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
@@ -151,7 +151,7 @@ export default function Header(props) {
                     )
                   )}
                 </div>
-                <div className="pt-4 pb-3 border-t border-gray-700">
+                {/* <div className="pt-4 pb-3 border-t border-gray-700">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
                       <img
@@ -184,7 +184,7 @@ export default function Header(props) {
                       </a>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </Disclosure.Panel>
             </>
           )}

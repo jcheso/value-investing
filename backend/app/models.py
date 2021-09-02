@@ -3,18 +3,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-class SAndP500(models.Model):
-    class Meta:
-        db_table = "app_sandp500"
-        verbose_name = "S&P 500 Stock"
-
-    symbol = models.CharField(max_length=255, default="key", primary_key=True)
-    name = models.CharField(max_length=255)
-    sector = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
 
 class PiotroskiScore(models.Model):
     class Meta:
@@ -50,6 +38,19 @@ class MagicFormulaScore(models.Model):
 
     def __str__(self):
         return self.symbol
+
+
+class SAndP500(models.Model):
+    class Meta:
+        db_table = "app_sandp500"
+        verbose_name = "S&P 500 Stock"
+
+    symbol = models.CharField(max_length=255, default="key", primary_key=True)
+    name = models.CharField(max_length=255)
+    sector = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class CompanyProfile(models.Model):

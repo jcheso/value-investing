@@ -13,8 +13,6 @@ import {
 // import InvestingForm from "../components/investing-form";
 
 const MagicFormula = (props) => {
-  console.log(props);
-
   const data = React.useMemo(() => props.data.magicFormulaScore, []);
 
   const columns = React.useMemo(
@@ -48,7 +46,7 @@ const MagicFormula = (props) => {
                 className="min-w-full divide-y divide-gray-200"
                 {...getTableProps()}
               >
-                <thead className="bg-gray-50 ">
+                <thead>
                   {headerGroups.map((headerGroup, index) => (
                     <tr key={index} {...headerGroup.getHeaderGroupProps()}>
                       {headerGroup.headers.map((column, index) => (
@@ -58,7 +56,7 @@ const MagicFormula = (props) => {
                             column.getSortByToggleProps()
                           )}
                           scope="col"
-                          className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="sticky top-0 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50"
                         >
                           <div className="flex flex-row items-center">
                             {column.render("Header")}

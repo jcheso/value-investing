@@ -1,10 +1,11 @@
 import { gql, useMutation } from "@apollo/client";
 import client from "../pages/api/apollo-client";
 import Layout from "../components/layout";
+import InvestingForm from "../components/investing-form";
 const Home = (props) => {
   return (
     <Layout>
-      <h1>Dashboard</h1>{" "}
+      <InvestingForm />
     </Layout>
   );
 };

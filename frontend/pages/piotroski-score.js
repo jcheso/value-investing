@@ -13,8 +13,6 @@ import {
 // import InvestingForm from "../components/investing-form";
 
 const PiotroskiScore = (props) => {
-  console.log(props);
-
   const data = React.useMemo(() => props.data.piotroskiScore, []);
 
   const columns = React.useMemo(
@@ -43,12 +41,12 @@ const PiotroskiScore = (props) => {
       <div className="flex flex-col ">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg h-vh overflow-y-scroll">
+            <div className="shadow overflow-auto border-b border-gray-200 sm:rounded-lg h-vh overflow-y-auto">
               <table
-                className="min-w-full divide-y divide-gray-200"
+                className="min-w-full divide-y divide-gray-200 relative w-full border"
                 {...getTableProps()}
               >
-                <thead className="bg-gray-50 ">
+                <thead>
                   {headerGroups.map((headerGroup, index) => (
                     <tr key={index} {...headerGroup.getHeaderGroupProps()}>
                       {headerGroup.headers.map((column, index) => (
@@ -58,7 +56,7 @@ const PiotroskiScore = (props) => {
                             column.getSortByToggleProps()
                           )}
                           scope="col"
-                          className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="sticky top-0 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50"
                         >
                           <div className="flex flex-row items-center">
                             {column.render("Header")}
