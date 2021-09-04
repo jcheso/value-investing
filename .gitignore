@@ -1,3 +1,6 @@
 .vscode  
 ValueInvestingApp.session.sql
 bash.exe.stackdump
+
+# Local Netlify folder
+.netlify
