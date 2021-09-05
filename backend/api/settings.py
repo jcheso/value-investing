@@ -30,12 +30,13 @@ SECRET_KEY = MY_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["valueinvestingdjangoapp.herokuapp.com"]
+ALLOWED_HOSTS = [".valueinvestingdjangoapp.herokuapp.com"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000" "https://valueinvestingdjangoapp.herokuapp.com",
+    "http://127.0.0.1:8000",
+    "https://valueinvestingdjangoapp.herokuapp.com",
     "https://value-investing-site.netlify.app",
 ]
 
@@ -148,15 +149,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 GRAPHENE = {"SCHEMA": "app.schema.schema"}
 
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-STATIC_URL = "/static/"
-
-# Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
-
-#  Add configuration for static files storage using whitenoise
+PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_DIR = os.path.join(PROJECT_ROOT, "../app")
+STATIC_ROOT = os.path.join(PROJECT_DIR, "staticfiles/")
+STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static/"),)
+# #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 import dj_database_url

@@ -7,3 +7,4 @@ app/management/commands/__pycache__
 app/scripts/__pycache__
 app/scripts/generate_portfolio.py
 app/scripts/magic.py
+mysite.log
