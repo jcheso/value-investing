@@ -1,13 +1,15 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
-// const httpLink = new HttpLink({
-//   uri: "https://valueinvestingdjangoapp.herokuapp.com/graphql",
-// });
-
+// Use for production
 const httpLink = new HttpLink({
-  uri: "http://127.0.0.1:8000/graphql",
+  uri: "https://valueinvestingdjangoapp.herokuapp.com/graphql",
 });
+
+// Use for local dev
+// const httpLink = new HttpLink({
+//   uri: "http://127.0.0.1:8000/graphql",
+// });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)

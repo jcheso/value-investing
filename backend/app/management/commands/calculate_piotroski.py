@@ -19,43 +19,46 @@ class Command(BaseCommand):
     #     parser.add_argument('poll_ids', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        # Pull data from DB for current year, previous year, 2 years ago.
 
-        # cash_flow_statement_df = pd.DataFrame(
-        #     list(CashFlowStatement.objects.all().values())
-        # )
-        # income_statement_df = pd.DataFrame(list(IncomeStatement.objects.all().values()))
-        # balance_sheet_statement_df = pd.DataFrame(
-        #     list(BalanceSheetStatement.objects.all().values())
-        # )
-        # share_index_df = pd.DataFrame(list(SAndP500.objects.all().values()))
-        # company_profile_df = pd.DataFrame(list(CompanyProfile.objects.all().values()))
+        # Use for production
+        cash_flow_statement_df = pd.DataFrame(
+            list(CashFlowStatement.objects.all().values())
+        )
+        income_statement_df = pd.DataFrame(list(IncomeStatement.objects.all().values()))
+        balance_sheet_statement_df = pd.DataFrame(
+            list(BalanceSheetStatement.objects.all().values())
+        )
+        share_index_df = pd.DataFrame(list(SAndP500.objects.all().values()))
+        company_profile_df = pd.DataFrame(list(CompanyProfile.objects.all().values()))
 
         user = settings.DATABASES["default"]["USER"]
         password = settings.DATABASES["default"]["PASSWORD"]
         database_name = settings.DATABASES["default"]["NAME"]
 
-        # database_url = "postgresql://{user}:{password}@ec2-44-195-201-3.compute-1.amazonaws.com:5432/{database_name}".format(
-        #     user=user,
-        #     password=password,
-        #     database_name=database_name,
-        # )
-
-        database_url = (
-            "postgresql://{user}:{password}@localhost:5432/{database_name}".format(
-                user=user,
-                password=password,
-                database_name=database_name,
-            )
+        # Use for production
+        database_url = "postgresql://{user}:{password}@ec2-44-195-201-3.compute-1.amazonaws.com:5432/{database_name}".format(
+            user=user,
+            password=password,
+            database_name=database_name,
         )
+
+        # Use for local
+        # database_url = (
+        #     "postgresql://{user}:{password}@localhost:5432/{database_name}".format(
+        #         user=user,
+        #         password=password,
+        #         database_name=database_name,
+        #     )
+        # )
 
         engine = create_engine(database_url, echo=False)
 
-        cash_flow_statement_df = pd.read_sql("app_cashflowstatement", engine)
-        income_statement_df = pd.read_sql("app_incomestatement", engine)
-        balance_sheet_statement_df = pd.read_sql("app_balancesheetstatement", engine)
-        share_index_df = pd.read_sql("app_sandp500", engine)
-        company_profile_df = pd.read_sql("app_companyprofile", engine)
+        # Use for local
+        # cash_flow_statement_df = pd.read_sql("app_cashflowstatement", engine)
+        # income_statement_df = pd.read_sql("app_incomestatement", engine)
+        # balance_sheet_statement_df = pd.read_sql("app_balancesheetstatement", engine)
+        # share_index_df = pd.read_sql("app_sandp500", engine)
+        # company_profile_df = pd.read_sql("app_companyprofile", engine)
 
         company_profile_df.set_index("symbol", inplace=True)
 
