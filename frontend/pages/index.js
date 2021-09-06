@@ -2,11 +2,19 @@ import { gql, useMutation } from "@apollo/client";
 import client from "../pages/api/apollo-client";
 import Layout from "../components/layout";
 import InvestingForm from "../components/investing-form";
+import Head from "next/head";
+
 const Home = (props) => {
   return (
-    <Layout>
-      <InvestingForm />
-    </Layout>
+    <>
+      <Head>
+        <title>Portfolio Generator</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Layout>
+        <InvestingForm />
+      </Layout>
+    </>
   );
 };
 

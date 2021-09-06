@@ -20,6 +20,10 @@ class PiotroskiScore(models.Model):
     assetTurnoverRatio = models.IntegerField(default=0)
     totalScore = models.IntegerField(default=0)
     returnOnAssets = models.BigIntegerField(default=0)
+    industry = models.CharField(max_length=255, default="None")
+    sector = models.CharField(max_length=255, default="None")
+    website = models.URLField(max_length=200, default="None")
+    companyName = models.CharField(max_length=255, default="None")
 
     def __str__(self):
         return self.totalScore
@@ -35,6 +39,10 @@ class MagicFormulaScore(models.Model):
     returnOnCapital = models.FloatField(default=0)
     forwardAnnualDividendYield = models.FloatField(default=0)
     magicFormulaRank = models.IntegerField(default=0)
+    industry = models.CharField(max_length=255, default="None")
+    sector = models.CharField(max_length=255, default="None")
+    website = models.URLField(max_length=200, default="None")
+    companyName = models.CharField(max_length=255, default="None")
 
     def __str__(self):
         return self.symbol

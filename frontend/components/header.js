@@ -4,17 +4,17 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Portfolio Generator", link: "/" },
+  { name: "Portfolio Generator - COMING SOON", link: "/" },
   // { name: "Portfolio Generator", link: "/portfolio-generator" },
   { name: "Piotroski Score", link: "/piotroski-score" },
   { name: "Magic Formula", link: "/magic-formula" },
   // { name: "Most Shorted", link: "/most-shorted" },
 ];
-const profile = ["Your Profile", "Settings", "Sign out"];
+// const profile = ["Your Profile", "Settings", "Sign out"];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function Header(props) {
   return (
@@ -22,7 +22,7 @@ export default function Header(props) {
       <div className="bg-gray-800 pb-32">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
-            <>
+            <Fragment key="disclosure">
               <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div className="border-b border-gray-700">
                   <div className="flex items-center justify-between h-16 px-4 sm:px-0">
@@ -114,9 +114,14 @@ export default function Header(props) {
                       <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open main menu</span>
                         {open ? (
-                          <XIcon className="block h-6 w-6" aria-hidden="true" />
+                          <XIcon
+                            key="XIcon"
+                            className="block h-6 w-6"
+                            aria-hidden="true"
+                          />
                         ) : (
                           <MenuIcon
+                            key="menuIcon"
                             className="block h-6 w-6"
                             aria-hidden="true"
                           />
@@ -143,7 +148,7 @@ export default function Header(props) {
                     ) : (
                       <a
                         href={item.link}
-                        href="#"
+                        key={item.link}
                         className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                       >
                         {item.name}
@@ -186,12 +191,20 @@ export default function Header(props) {
                   </div>
                 </div> */}
               </Disclosure.Panel>
-            </>
+            </Fragment>
           )}
         </Disclosure>
         <header className="py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-white"></h1>
+            <h1 className="text-3xl font-bold text-purple-400">
+              {props.title}
+            </h1>
+            <p className="py-2 text-sm font-medium text-white">
+              {props.description}
+            </p>
+            <p className="pt-1 text-xs font-light text-white">
+              {props.updated}
+            </p>
           </div>
         </header>
       </div>

@@ -19,7 +19,13 @@ class FinancialData(admin.ModelAdmin):
 
 
 class StockRating(admin.ModelAdmin):
-    list_display = ("symbol", "totalScore")
+    list_display = (
+        "symbol",
+        "companyName",
+        "sector",
+        "industry",
+        "totalScore",
+    )
 
 
 class CompanyProfileData(admin.ModelAdmin):
@@ -29,9 +35,9 @@ class CompanyProfileData(admin.ModelAdmin):
 class MagicFormulaScoreData(admin.ModelAdmin):
     list_display = (
         "symbol",
-        "earningYield",
-        "returnOnCapital",
-        "forwardAnnualDividendYield",
+        "companyName",
+        "sector",
+        "industry",
         "magicFormulaRank",
     )
 
