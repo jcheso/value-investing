@@ -12,3 +12,4 @@ Backend and Database hosted by Heroku.
 - Graphene
 - Django
 - PostgreSQL
+- Styled with Tailwind CSS
